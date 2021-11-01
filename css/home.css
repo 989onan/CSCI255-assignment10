@@ -1,0 +1,52 @@
+.navigation{
+    margin: 0px;
+    border: 0px;
+    border-spacing:0px;
+}
+.navigation td{
+    border: 0px;
+    padding:0px;
+    margin: 0px;
+}
+body{
+    margin: 0px;
+    border: 0px;
+    background-image: url("../img/Estate.jpg");
+}
+.navigation button{
+    color: white;
+    font-size: 20px;
+    background-color: rgb(102, 75, 255);
+    border: 0px;
+    padding:5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0px;
+    
+}
+.navigation button:hover{
+    background-color: rgb(176, 162, 255);
+}
+
+.loancalculator{
+    margin-left: 60%;
+    opacity: 0;
+    width: 400px;
+    height:250px;
+    background-color: rgb(213, 205, 255,.7);
+    visibility: hidden;
+}
+.loancalculator h1{
+    background-color: rgb(176, 162, 255,.7);
+    color: white;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+.loancalculator div{
+    background-color: rgb(176, 162, 255,.7);
+    color: white;
+    width: 100%;
+    font-size: 20px;
+    vertical-align: bottom;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="EN">
+    <head>
+        <link rel="stylesheet" href="css/home.css">
+        <title>
+            Real Estate Company
+        </title>
+    </head>
+    <body>
+        <table class="navigation">
+            <tr>
+                <td><button><p>Buy</p></button></td>
+                <td><button><p>Sale</p></button></td>
+                <td><button id="showloan"><p>Loan</p></button></td>
+                <td><button><p>About</p></button></td>
+            </tr>
+        </table>
+
+        <div id="loancalcdiv" class = "loancalculator">
+            <h1>Loan Information</h1>
+            <label>Loan Amount</label><input type="number" id="amount" placeholder="150000"><label>$</label><br><br>
+            <label>Interest Rate</label><input type="number" id="interest" placeholder="5.5"><label>%</label><br><br>
+            <label>Loan Term</label><input type="number" id="term" placeholder="30"><label>years</label><br><br>
+            <label>Start Date</label>
+            <select id="month">
+                <option>January</option>
+                <option>Feburary</option>
+                <option>March</option>
+                <option>April</option>
+                <option>May</option>
+                <option>June</option>
+                <option>July</option>
+                <option>August</option>
+                <option>September</option>
+                <option>October</option>
+                <option>November</option>
+                <option>December</option>
+            </select>
+            <select id="year">
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+            </select>
+            <br><br>
+            <br><br>
+            <div><h1 id="calcloan">Calculate</h1></div>
+        </div>
+
+        <script>
+            document.getElementById("showloan").addEventListener("click",openloancalc,false);
+            function openloancalc(){
+                document.getElementById("loancalcdiv").style.visibility = "visible";
+                document.getElementById("loancalcdiv").animate([{opacity:'0' },{opacity:'100'}],{duration:3000,fill:"forwards"})
+            }
+            document.getElementById("calcloan").addEventListener("click",calculateloan,false);
+            function calculateloan(){
+                var year = document.getElementById("year").selectedIndex;
+                var years = parseFloat(document.getElementById("term").value);
+                var interest = parseFloat(document.getElementById("interest").value);
+                var rate = interest/12;
+                var amount = parseInt(document.getElementById("amount").value);
+                var month = document.getElementById("month").selectedIndex;
+                var priniciple = 
+
+                year += 2011;
+                var balance = 147979.37;
+                var output = "<table id=\"outputtable\"><tr><td>Date</td><td>interest</td><td>principle</td><td>Balance</td></tr>" 
+                for(var i = year;i<years+year;i++){
+                    var yearpayment = 0;
+                    var priniciple = 0;
+                    for(var j = 0;j<12;j++){
+                        var monthlypayment = amount*(rate)/(1-(1+rate^12));
+                        var interestpaidmonth = balance*rate;
+                        yearpayment += interestpaidmonth;
+                        priniciple += monthlypayment-(interestpaidmonth);
+                        balance -= monthlypayment-(interestpaidmonth);
+                    }
+                    output = output+"<tr><td>"+(month+"/"+i)+"</td><td>"+yearpayment+"</td><td>"+priniciple+"</td><td>"+balance+"</td></tr>"
+                }
+                output += "</table>"
+
+                document.getElementById("loancalcdiv").innerHTML = output;
+            }
+
+        </script>
+    </body>
+</html>
